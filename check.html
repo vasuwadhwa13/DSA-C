@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Single Array</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            /* Same background color */
+            color: #33334d;
+            /* Dark text color */
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar (on the left side) */
+        .navbar {
+            width: 250px;
+            background-color: #33334d;
+            /* Preferred dark color */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto;
+            position: fixed;
+            /* Keep navbar fixed to the left */
+            height: 100vh;
+            /* Full height to fill the left side */
+        }
+
+        .navlist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .navlist li {
+            margin: 10px 0;
+        }
+
+        .navlist a {
+            text-decoration: none;
+            color: #ceb040;
+            /* Gold text */
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .navlist a:hover {
+            background-color: #6d5c6a;
+            /* Soft purple hover effect */
+            color: #f4f4f4;
+        }
+
+        /* Main content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .box-main {
+            max-width: 800px;
+            width: 100%;
+            margin-left: 170px;
+            background-color: #fff;
+            /* White background for the box */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ceb040;
+            /* Gold border */
+        }
+
+        .firsthalf2 ul {
+            list-style: none;
+        }
+
+        .firsthalf2 li {
+            margin: 10px 0;
+        }
+
+        .firsthalf2 a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #6d5c6a;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /* Soft purple color */
+        }
+
+        .firsthalf2 a:hover {
+            color: #ceb040;
+            /* Gold on hover */
+        }
+
+        .vasu {
+                color: #ceb040;
+            margin-left: 300px;
+            max-width: 1000px;
+            font-size: large;
+            width: auto;
+            background-color: #33334d;
+            /* White background for the box */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 4px solid #ceb040;
+            word-wrap: break-word;
+        }
+
+        .vasu b {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ceb040;
+        }
+
+        .out {
+                color: #ceb040;
+                border: 5px solid #ceb040;
+            background-color: #ececf8;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+            background-color: #ceb040;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+            z-index: 1000; /* On top of other elements */
+        }
+
+        .back-to-top:hover {
+            background-color: #6d5c6a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left Navigation Bar -->
+        <nav class="navbar">
+            <ul class="navlist">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="2Darray.html">2D Array</a></li>
+                <li><a href="graph.html">Graph</a></li>
+                <li><a href="ll.html">Linked List</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="rec.html">Recursion</a></li>
+                <li><a href="searching.html">Searching Algorithm</a></li>
+                <li><a href="array.html">Single Dimension Array</a></li>
+                <li><a href="sorting.html">Sorting Algorithm</a></li>
+                <li><a href="stack.html">Stack</a></li>
+                <li><a href="String.html">Strings</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+
+        <!-- Right Main Content -->
+        <section class="main-content">
+            <div class="box-main">
+                <h1>Single Dimension Array Questions:-</h1> <!-- Added a heading for context -->
+                <div class="firsthalf2">
+                    <ul>
+                        <li><a href="#ArrQ1">1. Enter an array from user and display all the value ?</a></li>
+                        <li><a href="#ArrQ2">2. Enter an array from user and print the array in reverse order ?</a>
+                        </li>
+                        <li><a href="#ArrQ3">3. Enter an array from user and copy the array into second array?</a>
+                        </li>
+                        <li><a href="#ArrQ4">4. Enter an array from user and copy it into another array in reverse
+                                order?</a></li>
+                        <li><a href="#ArrQ5">5. Enter an array from user and print the number which is even ?</a>
+                        </li>
+                        <li><a href="#ArrQ6">6. Enter an array from user and print the number which is positive
+                                ?</a></li>
+                        <li><a href="#ArrQ7">7. Enter an array from user and square all the values of array ?</a>
+                        </li>
+                        <li><a href="#ArrQ8">8. Enter an array from user and find maximum and minimum value?</a>
+                        </li>
+                        <li><a href="#ArrQ9">9. Enter an array from user and find the k-th smallest value?</a></li>
+                        <li><a href="#ArrQ10">10. Enter an array from user and add all values ?</a></li>
+                        <li><a href="#ArrQ11">11. Enter an array from user and find the duplicate values?</a></li>
+                        <li><a href="#ArrQ12">12. Enter an array from user and remove the duplicate values and fill
+                                with zero? </a></li>
+                        <li><a href="#ArrQ13">13. Enter an array from user and count the duplicate values?</a></li>
+                        <li><a href="#ArrQ14">14. Enter an array from user and print all possible combinations of
+                                the elements?</a></li>
+                        <li><a href="#ArrQ15">15. Enter an array from user and print all the palindrome numbers?</a>
+                        </li>
+                        <li><a href="#ArrQ16">16. Enter two arrays from the user and check they are same or not?</a>
+                        </li>
+                        <li><a href="#ArrQ17">17. Merge the two sorted arrays into one array but in sorted
+                                order?</a></li>
+                        <li><a href="#ArrQ18">18. Find the local minima in the array? (An element in an array is a
+                                local minima if it less than the element after it, and the element before it)</a></li>
+                        <li><a href="#ArrQ19">19. Find the local maxima in the array? (An element in an array is a
+                                local maxima if it greater than the element after it, and the element before it)</a>
+                        </li>
+                        <li><a href="#ArrQ20">20. Trapping Rain Water Problem: Given n non-negative integers
+                                representing an elevation map where the width of each bar is 1, compute how much water
+                                it can trap after raining.
+                                <br>Explanation -
+                                <br>Input: height = [0,1,0,2,1,0,1,3,2,1,2,1] <br>Output: 6 Explanation: The above
+                                elevation map
+                                (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units
+                                of rain water (blue section) are being trapped.</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="vasu">
+        <pre>
+<b id="ArrQ1">1.Enter an array from user and display all the value ?</b>                
+
+#include&lt;stdio.h&gt;
+void touppercase (char str[])
+{ 
+    for(int i=0; str[i]!= '\0'; i++)
+    { 
+        if(str[i] >= 'a' && str[i] &lt;= 'z' )
+        {
+            str[i] = str[i] - 32; 
+        }
+    }
+} 
+
+int main()
+{ 
+    char str[100];
+    printf("Enter your string : "); 
+    gets(str); 
+    printf("String before upper case =  %s \n", str);
+    touppercase(str); 
+    printf("String after upper case =  %s \n", str);
+    return 0;
+}
+
+</pre>
+        <pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>  
+Enter your string : john
+String before upper case= john
+String after upper case= JOHN
+
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ2">2. Enter an array from user and print the array in reverse order ?</b>                 
+    </pre>
+        <pre class="out">
+    <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ3">3. Enter an array from user and copy the array into second array?</b>                 
+            </pre>
+        <pre class="out">
+            <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ4">4. Enter an array from user and copy it into another array in reverse order?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ5">5. Enter an array from user and print the number which is even ?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ6">6. Enter an array from user and print the number which is positive ?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ7">7. Enter an array from user and square all the values of array ?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ8">8. Enter an array from user and find maximum and minimum value?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ9">9. Enter an array from user and find the k-th smallest value?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ10">10. Enter an array from user and add all values ?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ11">11. Enter an array from user and find the duplicate values?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ12">12.Enter an array from user and remove the duplicate values and fill with zero?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ13">13. Enter an array from user and count the duplicate values?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ14">14. Enter an array from user and print all possible combinations of the elements?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ15">15. Enter an array from user and print all the palindrome numbers?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ16">16. Enter two arrays from the user and check they are same or not?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ17">17. Merge the two sorted arrays into one array but in sorted order?</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ18"> 18. Find the local minima in the array? (An element in an array is a local minima if it less than the 
+       element after it, and the element before it).</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ19">19. Find the local maxima in the array? (An element in an array is a local maxima if it greater than the
+      element after it,and the element before it)</b>                 
+    </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ20">20. Trapping Rain Water Problem: Given n non-negative integers representing an elevation map where the width 
+      of each bar is 1, compute how much water it can trap after raining.
+      Explanation -
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1] Output: 6 Explanation: The above elevation map (black section)
+is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.</b>                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+</pre>
+    </div>
+    <button class="back-to-top" id="backToTopBtn">Back to Top</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+
+        // Get the button
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        // Show or hide the button based on scroll position
+        window.onscroll = function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        // Scroll to the top when the button is clicked
+        backToTopBtn.onclick = function () {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        };
+    </script>
+</body>
+
+</html>

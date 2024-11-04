@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion</title>
+    <style>
+            /* General reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Same background color */
+        color: #33334d; /* Dark text color */
+    }
+
+    .container {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    /* Navigation Bar (on the left side) */
+    .navbar {
+        width: 250px;
+        background-color: #33334d; /* Preferred dark color */
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-y: auto;
+        position: fixed; /* Keep navbar fixed to the left */
+        height: 100vh; /* Full height to fill the left side */
+    }
+
+    .navlist {
+        list-style: none;
+        padding: 0;
+    }
+
+    .navlist li {
+        margin: 10px 0;
+    }
+
+    .navlist a {
+        text-decoration: none;
+        color: #ceb040; /* Gold text */
+        font-weight: bold;
+        font-size: 18px;
+        padding: 10px;
+        display: block;
+        transition: background-color 0.3s ease;
+    }
+
+    .navlist a:hover {
+        background-color: #6d5c6a; /* Soft purple hover effect */
+        color: #f4f4f4;
+    }
+
+    /* Main content */
+    .main-content {
+        flex-grow: 1;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .box-main {
+        max-width: 800px;
+        margin-left: 170px;
+        width: 100%;
+        background-color: #fff; /* White background for the box */
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 2px solid #ceb040; /* Gold border */
+    }
+
+    .firsthalf2 ul {
+        list-style: none;
+    }
+
+    .firsthalf2 li {
+        margin: 10px 0;
+    }
+
+    .firsthalf2 a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #6d5c6a;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        /* Soft purple color */
+    }
+
+    .firsthalf2 a:hover {
+        color: #ceb040; /* Gold on hover */
+    }
+    .vasu {
+            color: rgb(14, 13, 13);
+            margin-left: 300px;
+            max-width: 1000px;
+            font-size: large;
+            width: auto;
+            background-color: #fff;
+            /* White background for the box */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 4px solid #ceb040;
+            word-wrap: break-word;
+        }
+
+        .vasu b {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ceb040;
+        }
+
+        .out {
+            color: #fff;
+            background-color: #111111;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+            background-color: #ceb040;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+            z-index: 1000; /* On top of other elements */
+        }
+
+        .back-to-top:hover {
+            background-color: #6d5c6a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Navigation Bar -->
+        <nav class="navbar">
+            <ul class="navlist">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="2Darray.html">2D Array</a></li>
+                <li><a href="graph.html">Graph</a></li>
+                <li><a href="linkedlist.html">Linked List</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="rec.html">Recursion</a></li>
+                <li><a href="searching.html">Searching Algorithm</a></li>
+                <li><a href="array.html">Single Dimension Array</a></li>
+                <li><a href="sorting.html">Sorting Algorithm</a></li>
+                <li><a href="stack.html">Stack</a></li>
+                <li><a href="String.html">Strings</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+
+        <!-- Right Main Content -->
+        <section class="main-content">
+            <div class="box-main">
+                <h1>Recursion Questions:</h1> <!-- Added a heading for context -->
+                <div class="firsthalf2">
+                    <ul>
+                        <li><a href="#recQ1">1.CALCULATE FACTORIAL OF A NUMBER USING RECURSION</a></li>
+                        <li><a href="#recQ2">2.CALCULATE FIBONACCI OF A NUMBER USING RECURSION.</a></li>
+                        <li><a href="#recQ3">3.CALCULATE THE SUM OF NATURAL NUMBERS TILL 10 USING RECURSION.</a></li>
+                        <li><a href="#recQ4">4.CONVERT A NUMBER INTO BINARY USING RECURSION</a></li>
+                        <li><a href="#recQ5">5.FIND THE LARGEST ELEMENT IN THE INTEGER ARRAY USING RECURSION.</a></li>
+                        <li><a href="#recQ6">6.FIND THE SMALLEST ELEMENT IN THE INTEGER ARRAY USING RECURSION.</a></li>
+                        <li><a href="#recQ7">7.ENTER THE NUMBER FROM THE USER AND ADD ALL DIGITS OF THE NUMBER USING RECURSION.</a></li>
+                        <li><a href="#recQ8">8.FIND THE ARITHMETIC MEAN OF AN INTEGER ARRAY USING RECURSION.</a></li>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+<div class="vasu">
+    <pre>
+        <br>
+<b id="recQ1">1.CALCULATE FACTORIAL OF A NUMBER USING RECURSION</b>
+
+#include&lt;stdio.h&gt;
+
+int factorial(int n)
+{
+    if(n==0)
+    {
+        return 1;
+    }
+    else
+    {
+        return (n*factorial(n-1));
+    }
+}
+
+int main()
+{
+    int n;
+    printf("Enter the number for finding factorial :");
+    scanf("%d",&n);
+    printf("FACTORIAL OF %d = %d",n,factorial(n));
+}
+        
+                </pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+Enter the number for finding factorial :4
+FACTORIAL OF 4 = 24                  
+        </pre>
+        
+                <pre>
+        <br>
+<b id="recQ2">2.CALCULATE FIBONACCI OF A NUMBER USING RECURSION.</b>
+
+#include &lt;stdio.h&gt;
+
+int fibonacci(int n) 
+{
+    if (n &lt;= 1) 
+    {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() 
+{
+    int n;
+    printf("Enter a non-negative integer: ");
+    scanf("%d", &n);
+    
+    if (n &lt; 0) 
+    {
+        printf("Fibonacci is undefined for negative numbers.\n");
+    } 
+    else 
+    {
+        printf("Fibonacci sequence up to %d:\n", n);
+        for (int i = 0; i &lt;= n; i++) 
+        {
+            printf("%d ", fibonacci(i));
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+                
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+Enter a non-negative integer: 5
+Fibonacci sequence up to 5:
+0 1 1 2 3 5  
+</pre>
+        
+<pre>
+        <br>
+<b id="recQ3">3.CALCULATE THE SUM OF NATURAL NUMBERS TILL 10 USING RECURSION.</b>
+
+#include &lt;stdio.h&gt;
+
+int sumNatural(int n) 
+{
+    if (n &lt;= 0) 
+    {
+        return 0;
+    }
+    return n + sumNatural(n - 1);
+}
+
+int main() 
+{
+    int result = sumNatural(10);
+    printf("The sum of natural numbers up to 10 is: %d\n", result);
+    return 0;
+}
+
+
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+The sum of natural numbers up to 10 is: 55  
+</pre>
+
+    <pre>
+<br>
+<b id="recQ4">4.CONVERT A NUMBER INTO BINARY USING RECURSION</b>
+
+#include &lt;stdio.h&gt;
+
+void printBinary(int n) 
+{
+    if (n &gt; 1) 
+    {
+        printBinary(n / 2);
+    }
+    printf("%d", n % 2);
+}
+
+int main() 
+{
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    
+    printf("Binary representation of %d is: ", number);
+    printBinary(number);
+    printf("\n");
+    
+    return 0;
+}
+
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3> 
+Enter a number: 100
+Binary representation of 100 is: 1100100 
+</pre>
+<pre>
+<br>
+<b id="recQ5">5.FIND THE LARGEST ELEMENT IN THE INTEGER ARRAY USING RECURSION.</b>
+
+#include &lt;stdio.h&gt;
+
+int findLargest(int arr[], int size) 
+{
+    if (size == 1) 
+    {
+        return arr[0];
+    }
+    
+    int largest = findLargest(arr, size - 1);
+    return arr[size - 1] &gt; largest ? arr[size - 1] : largest;
+}
+
+int main() 
+{
+    int arr[] = {3, 5, 7, 2, 8, 1, 4};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    
+    int largest = findLargest(arr, size);
+    printf("The largest element in the array is: %d\n", largest);
+    
+    return 0;
+}
+
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+The largest element in the array is: 8  
+</pre>
+
+        <pre>
+<br>
+<b id="recQ6">6.FIND THE SMALLEST ELEMENT IN THE INTEGER ARRAY USING RECURSION.</b>
+#include &lt;stdio.h&gt;
+
+int findLargest(int arr[], int size) 
+{
+    if (size == 1) 
+    {
+        return arr[0];
+    }
+    
+    int largest = findLargest(arr, size - 1);
+    return arr[size - 1] &gt; largest ? arr[size - 1] : largest;
+}
+
+int main() 
+{
+    int arr[] = {3, 5, 7, 2, 8, 1, 4};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    
+    int largest = findLargest(arr, size);
+    printf("The largest element in the array is: %d\n", largest);
+    
+    return 0;
+}
+
+
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>  
+The smallest element in the array is: 1
+
+</pre>
+
+        <pre>
+<br>
+<b id="recQ7">7.ENTER THE NUMBER FROM THE USER AND ADD ALL DIGITS OF THE NUMBER USING RECURSION.</b>
+
+#include &lt;stdio.h&gt;
+
+int sumOfDigits(int n) 
+{
+    if (n == 0) 
+    {
+        return 0;
+    }
+    return (n % 10) + sumOfDigits(n / 10);
+}
+
+int main() 
+{
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    
+    int sum = sumOfDigits(number);
+    printf("The sum of the digits is: %d\n", sum);
+    
+    return 0;
+}
+
+
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3> 
+Enter a number: 5654
+The sum of the digits is: 20 
+</pre>
+
+        <pre>
+<br>
+<b id="recQ8">8.FIND THE ARITHMETIC MEAN OF AN INTEGER ARRAY USING RECURSION.</b>
+
+#include &lt;stdio.h&gt;
+
+float calculateSum(int arr[], int size) 
+{
+    if (size == 0) 
+    {
+        return 0;
+    }
+    return arr[size - 1] + calculateSum(arr, size - 1);
+}
+
+float calculateMean(int arr[], int size) 
+{
+    if (size == 0) 
+    {
+        return 0; // To avoid division by zero
+    }
+    float sum = calculateSum(arr, size);
+    return sum / size;
+}
+
+int main() 
+{
+    int size, i;
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter %d elements:\n", size);
+    for (i = 0; i &lt; size; i++) 
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    float mean = calculateMean(arr, size);
+    printf("The arithmetic mean of the array is: %.2f\n", mean);
+    
+    return 0;
+}
+
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+Enter the number of elements in the array: 5
+Enter 5 elements:
+2
+4
+5
+52
+2222
+The arithmetic mean of the array is: 457.00  
+</pre>
+</div>
+    <button class="back-to-top" id="backToTopBtn">Back to Top</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+
+        // Get the button
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        // Show or hide the button based on scroll position
+        window.onscroll = function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        // Scroll to the top when the button is clicked
+        backToTopBtn.onclick = function () {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        };
+    </script>
+</body>
+</html>

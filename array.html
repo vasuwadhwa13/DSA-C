@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Single Array</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            /* Same background color */
+            color: #33334d;
+            /* Dark text color */
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar (on the left side) */
+        .navbar {
+            width: 250px;
+            background-color: #33334d;
+            /* Preferred dark color */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto;
+            position: fixed;
+            /* Keep navbar fixed to the left */
+            height: 100vh;
+            /* Full height to fill the left side */
+        }
+
+        .navlist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .navlist li {
+            margin: 10px 0;
+        }
+
+        .navlist a {
+            text-decoration: none;
+            color: #ceb040;
+            /* Gold text */
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .navlist a:hover {
+            background-color: #6d5c6a;
+            /* Soft purple hover effect */
+            color: #f4f4f4;
+        }
+
+        /* Main content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .box-main {
+            max-width: 800px;
+            width: 100%;
+            margin-left: 170px;
+            background-color: #fff;
+            /* White background for the box */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ceb040;
+            /* Gold border */
+        }
+
+        .firsthalf2 ul {
+            list-style: none;
+        }
+
+        .firsthalf2 li {
+            margin: 10px 0;
+        }
+
+        .firsthalf2 a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #6d5c6a;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /* Soft purple color */
+        }
+
+        .firsthalf2 a:hover {
+            color: #ceb040;
+            /* Gold on hover */
+        }
+
+        .vasu {
+            color: rgb(14, 13, 13);
+            margin-left: 300px;
+            max-width: 1000px;
+            font-size: large;
+            width: auto;
+            background-color: #fff;
+            /* White background for the box */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 4px solid #ceb040;
+            word-wrap: break-word;
+        }
+
+        .vasu b {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ceb040;
+        }
+
+        .out {
+            color: #fff;
+            background-color: #111111;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+            background-color: #ceb040;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: none;
+            /* Hidden by default */
+            z-index: 1000;
+            /* On top of other elements */
+        }
+
+        .back-to-top:hover {
+            background-color: #6d5c6a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left Navigation Bar -->
+        <nav class="navbar">
+            <ul class="navlist">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="2Darray.html">2D Array</a></li>
+                <li><a href="graph.html">Graph</a></li>
+                <li><a href="linkedlist.html">Linked List</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="rec.html">Recursion</a></li>
+                <li><a href="searching.html">Searching Algorithm</a></li>
+                <li><a href="array.html">Single Dimension Array</a></li>
+                <li><a href="sorting.html">Sorting Algorithm</a></li>
+                <li><a href="stack.html">Stack</a></li>
+                <li><a href="String.html">Strings</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+
+        <!-- Right Main Content -->
+        <section class="main-content">
+            <div class="box-main">
+                <h1>Single Dimension Array Questions:-</h1> <!-- Added a heading for context -->
+                <div class="firsthalf2">
+                    <ul>
+                        <li><a href="#ArrQ1">1. Enter an array from user and display all the value ?</a></li>
+                        <li><a href="#ArrQ2">2. Enter an array from user and print the array in reverse order ?</a>
+                        </li>
+                        <li><a href="#ArrQ3">3. Enter an array from user and copy the array into second array?</a>
+                        </li>
+                        <li><a href="#ArrQ4">4. Enter an array from user and copy it into another array in reverse
+                                order?</a></li>
+                        <li><a href="#ArrQ5">5. Enter an array from user and print the number which is even ?</a>
+                        </li>
+                        <li><a href="#ArrQ6">6. Enter an array from user and print the number which is positive
+                                ?</a></li>
+                        <li><a href="#ArrQ7">7. Enter an array from user and square all the values of array ?</a>
+                        </li>
+                        <li><a href="#ArrQ8">8. Enter an array from user and find maximum and minimum value?</a>
+                        </li>
+                        <li><a href="#ArrQ9">9. Enter an array from user and find the k-th smallest value?</a></li>
+                        <li><a href="#ArrQ10">10. Enter an array from user and add all values ?</a></li>
+                        <li><a href="#ArrQ11">11. Enter an array from user and find the duplicate values?</a></li>
+                        <li><a href="#ArrQ12">12. Enter an array from user and remove the duplicate values and fill
+                                with zero? </a></li>
+                        <li><a href="#ArrQ13">13. Enter an array from user and count the duplicate values?</a></li>
+                        <li><a href="#ArrQ14">14. Enter an array from user and print all possible combinations of
+                                the elements?</a></li>
+                        <li><a href="#ArrQ15">15. Enter an array from user and print all the palindrome numbers?</a>
+                        </li>
+                        <li><a href="#ArrQ16">16. Enter two arrays from the user and check they are same or not?</a>
+                        </li>
+                        <li><a href="#ArrQ17">17. Merge the two sorted arrays into one array but in sorted
+                                order?</a></li>
+                        <li><a href="#ArrQ18">18. Find the local minima in the array? (An element in an array is a
+                                local minima if it less than the element after it, and the element before it)</a></li>
+                        <li><a href="#ArrQ19">19. Find the local maxima in the array? (An element in an array is a
+                                local maxima if it greater than the element after it, and the element before it)</a>
+                        </li>
+                        <li><a href="#ArrQ20">20. Trapping Rain Water Problem: Given n non-negative integers
+                                representing an elevation map where the width of each bar is 1, compute how much water
+                                it can trap after raining.
+                                <br>Explanation -
+                                <br>Input: height = [0,1,0,2,1,0,1,3,2,1,2,1] <br>Output: 6 Explanation: The above
+                                elevation map
+                                (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units
+                                of rain water (blue section) are being trapped.</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="vasu">
+        <pre>
+<b id="ArrQ1">1.Enter an array from user and display all the value ?</b>                
+
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+int i, j;
+int arr[5];
+for (i = 0; i &lt; 5; i++)
+{
+printf("Enter the element of the array: ");
+scanf("%d", &arr[i]);
+}
+printf("Elements of the array are : ");
+for (j = 0; j &lt; 5; j++) 
+{
+printf("%d\t", arr[j]);
+}
+printf("\n"); 
+return 0; 
+}
+
+
+</pre>
+        <pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>  
+Enter the element of the array: 5
+Enter the element of the array: 4
+Enter the element of the array: 3
+Enter the element of the array: 2
+Enter the element of the array: 1
+Elements of the array are : 5     4      3       2       1
+
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ2">2. Enter an array from user and print the array in reverse order ?</b> 
+
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    int i, j;
+    int arr[5];
+
+    // Input elements into the array
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the element of the array: ");
+        scanf("%d", &arr[i]);
+    }
+
+    // Print elements in reverse order
+    printf("Elements of the array in reverse order: ");
+    for (j = 4; j &gt;= 0; j--) 
+    {
+        printf("%d\t", arr[j]);
+    }
+    printf("\n"); 
+
+    return 0; 
+}
+
+    </pre>
+        <pre class="out">
+    <h3 style="text-align: center;">OUTPUT</h3>
+Enter the element of the array: 5
+Enter the element of the array: 4
+Enter the element of the array: 3
+Enter the element of the array: 2
+Enter the element of the array: 1
+Elements of the array in reverse order: 1       2       3       4       5  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ3">3. Enter an array from user and copy the array into second array?</b> 
+
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    int i;
+    int arr1[5], arr2[5];
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter first array element: ");
+        scanf("%d", &arr1[i]);
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        arr2[i] = arr1[i];
+    }
+
+    printf("Elements of the second array are: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("%d\t", arr2[i]);
+    }
+
+    return 0; 
+}
+
+            </pre>
+        <pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+Enter first array element: 1
+Enter first array element: 2
+Enter first array element: 3
+Enter first array element: 4
+Enter first array element: 5
+Elements of the second array are: 1     2       3       4       5              
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ4">4. Enter an array from user and copy it into another array in reverse order?</b>
+
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    int i;
+    int arr1[5], arr2[5];
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter first array element: ");
+        scanf("%d", &arr1[i]);
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        arr2[i] = arr1[4 - i]; 
+    }
+
+    printf("Elements of the second array in reverse order are: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("%d\t", arr2[i]);
+    }
+    printf("\n");
+
+    return 0; 
+}
+
+</pre>
+        <pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+Enter first array element: 7
+Enter first array element: 8
+Enter first array element: 2
+Enter first array element: 33
+Enter first array element: 6
+Elements of the second array in reverse order are: 6    33      2       8       7
+       
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ5">5. Enter an array from user and print the number which is even ?</b>
+
+#include &lt;stdio.h&gt;
+
+void main()
+{
+    int i, j;
+    int arr[5];
+    
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the array element: ");
+        scanf("%d", &arr[i]);  	
+    }	  
+
+    printf("The even numbers in the array: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        if (arr[i] % 2 == 0)
+        {
+            printf("%d ", arr[i]);	
+        }
+    }
+}
+                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter the array element :1
+Enter the array element :2
+Enter the array element :4
+Enter the array element :6
+Enter the array element :8
+The even numbers in array: 2 4 6 8
+
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ6">6. Enter an array from user and print the number which is positive ?</b>
+
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i;
+    int arr[3];
+    
+    for (i = 0; i &lt; 3; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i &lt; 3; i++)
+    {
+        if (arr[i] &gt; 0)
+        {
+            printf("\n arr[%d] = %d is pos", i, arr[i]);
+        }
+    }
+    return 0;
+}
+
+
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>  
+Enter the number :-5
+Enter the number :2
+Enter the number :-8
+
+arr[1] = 2 is pos
+
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ7">7. Enter an array from user and square all the values of array ?</b>
+
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i;
+    int arr[5];
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        arr[i] = arr[i] * arr[i];
+    }
+
+    printf("Square values are: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("%d\t", arr[i]);
+    }
+    return 0;
+}
+
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter the number: 1
+Enter the number: 2
+Enter the number: 3
+Enter the number: 4
+Enter the number: 5
+Square values are: 1    4       9       16      25          
+
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ8">8. Enter an array from user and find maximum and minimum value?</b>
+
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i;
+    int arr[5];
+    int max, min;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the array element: ");
+        scanf("%d", &arr[i]);
+    }
+	
+    max = min = arr[0];
+
+    for (i = 1; i &lt; 5; i++)
+    {
+        if (arr[i] &gt; max)
+        {
+            max = arr[i];
+        }
+    
+        if (arr[i] &lt; min)
+        {
+            min = arr[i];
+        }
+    }
+
+    printf("\nMaximum value: %d\n", max);
+    printf("\nMinimum value: %d\n", min);
+
+    return 0;
+}
+                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter the array element: 1
+Enter the array element: 2
+Enter the array element: 3
+Enter the array element: 4
+Enter the array element: 5
+
+Maximum value: 5
+
+Minimum value: 1         
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ9">9. Enter an array from user and find the k-th smallest value?</b>
+
+#include&lt;stdio.h&gt;
+
+    void main()
+    {
+        int arr[5];
+        int k, temp, i, j;
+    
+        for(i = 0; i &lt; 5; i++)
+        {
+            printf("Enter element at arr[%d]=", i);
+            scanf("%d", &arr[i]);
+        }
+    
+        for (int i = 0; i &lt; 4; i++) 
+        { 
+            for (int j = 0; j &lt; 4 - i; j++)
+            { 
+                if (arr[j] &gt; arr[j + 1])
+                {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    
+        for(i = 0; i &lt; 5; i++)
+        {
+            printf("%d\t", arr[i]);
+        }
+    
+        printf("\nEnter the kth smallest in the array (0 to 4):");
+        scanf("%d", &k);
+    
+        if (k &lt; 0 || k &gt;= 5)
+        {
+            printf("Invalid location\n");
+            return;
+        } 
+        else 
+        {
+            printf("The %d smallest element is %d\n", k + 1, arr[k]); 
+            return;
+        }
+    }
+    
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter element at arr[0]=22
+Enter element at arr[1]=0
+Enter element at arr[2]=4
+Enter element at arr[3]=5575
+Enter element at arr[4]=1
+0       1       4       22      5575
+Enter the kth smallest in the array (0 to 4) :3
+The 3 smallest element is 22          
+
+    </pre>
+
+        <pre>
+<br>
+<b id="ArrQ10">10. Enter an array from user and add all values ?</b>
+
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i;
+    int arr[5];
+    int sum = 0;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the array element: ");
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+
+    printf("The sum of all values is: %d\n", sum);
+
+    return 0;
+}
+
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter the array element: 1
+Enter the array element: 2
+Enter the array element: 3
+Enter the array element: 4
+Enter the array element: 5
+The sum of all values is: 15         
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ11">11. Enter an array from user and find the duplicate values?</b>
+
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i, j;
+    int arr[5];
+    int store;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the array element: ");
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Duplicate values are: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        store = 0;
+        for (j = i + 1; j &lt; 5; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                store = 1;
+                break;
+            }
+        }
+        if (store)
+        {
+            printf("%d ", arr[i]);
+        }
+    }
+
+    return 0;
+}
+
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter the array element: 11
+Enter the array element: 22
+Enter the array element: 33
+Enter the array element: 44
+Enter the array element: 44
+Duplicate values are: 44          
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ12">12.Enter an array from user and remove the duplicate values and fill with zero?</b>
+
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i, j;
+    int arr[5];
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the array element: ");
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        for (j = i + 1; j &lt; 5; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                arr[i] = arr[j] = 0;
+                break;
+            }
+        }
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf(" %d ", arr[i]);
+    }
+
+    return 0;
+}
+
+
+</pre>
+        <pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+Enter the array element: 11
+Enter the array element: 12
+Enter the array element: 11
+Enter the array element: 13
+Enter the array element: 14
+ 0  12  0  13  14  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ13">13. Enter an array from user and count the duplicate values?</b>
+
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int size;
+    printf("Enter the size of your array: ");
+    scanf("%d", &size);
+
+    int array[size];
+
+    for (int i = 0; i &lt; size; i++) {
+        printf("Enter value for element %d: ", i + 1);
+        scanf("%d", &array[i]);
+    }
+
+    int count = 0;
+
+    for (int i = 0; i &lt; size; i++) {
+        for (int j = i + 1; j &lt; size; j++) {
+            if (array[i] == array[j]) {
+                count++;
+                break;
+            }
+        }
+    }
+
+    printf("Number of duplicate values: %d\n", count);
+
+    return 0;
+}
+
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter the size of your array: 5
+Enter value for element 1: 1
+Enter value for element 2: 1
+Enter value for element 3: 2
+Enter value for element 4: 2
+Enter value for element 5: 4
+Number of duplicate values: 2
+        
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ14">14. Enter an array from user and print all possible combinations of the elements?</b>
+
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    int arr[3];
+    for (int i = 0; i &lt; 3; i++) 
+    {
+        printf("Enter value for element: ");
+        scanf("%d", &arr[i]);
+    }
+
+    for (int i = 0; i &lt; 3; i++) 
+    {
+        for (int j = i; j &lt; 3; j++) 
+        {
+            for (int k = i; k &lt;= j; k++) 
+            {
+                printf("%d", arr[k]);
+            }
+            printf("\n");
+        }
+    }
+
+    return 0;
+}
+                 
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter value for element : 11
+Enter value for element : 22
+Enter value for element : 33
+11
+1122
+112233
+22
+2233
+33          
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ15">15. Enter an array from user and print all the palindrome numbers?</b>
+#include&lt;stdio.h&gt;
+
+    void main()
+    {
+        int n, c, r, i, s = 0;
+        int arr[5];
+        
+        for(i = 0; i &lt; 5; i++)
+        {
+            printf("Enter Number at arr[%d]: ", i);
+            scanf("%d", &arr[i]);
+        }
+        
+        for(i = 0; i &lt; 5; i++)
+        {
+            n = arr[i];
+            c = n;
+            s = 0;
+            while(n &gt; 0)
+            {
+                r = n % 10;
+                s = r + (s * 10);
+                n = n / 10;
+            }
+            
+            if(c == s)
+            {
+                printf("\nPalindrome Numbers: %d ", c);
+            }    
+        }
+    }
+    
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter Number at arr[0]: 525
+Enter Number at arr[1]: 665 
+Enter Number at arr[2]: 44848
+Enter Number at arr[3]: 89898
+Enter Number at arr[4]: 5556555
+
+Palidrone Numbers : 525
+Palidrone Numbers : 89898
+Palidrone Numbers : 5556555          
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ16">16. Enter two arrays from the user and check they are same or not?</b>
+#include&lt;stdio.h&gt;
+
+void main()
+{
+    int arr1[5];
+    int arr2[5];
+    int i, j, n;
+    
+    printf("\n----ELEMENT OF 1st ARRAY---\n");
+    for(i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the element at arr[%d] :", i);
+        scanf("%d", &arr1[i]);
+    }
+    
+    printf("\n----ELEMENT OF 2nd ARRAY---\n");
+    for(j = 0; j &lt; 5; j++)
+    {
+        printf("Enter the element at arr[%d] :", j);
+        scanf("%d", &arr2[j]);
+    }
+    
+    for(n = 0; n &lt; 5; n++)
+    {
+        if(arr1[n] != arr2[n])
+        {
+            printf("---NO, BOTH ARRAYS ARE NOT SAME.---");
+            return;
+        }
+    }
+    printf("---YES, BOTH ARRAYS ARE SAME.---");
+}
+
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+----ELEMENT OF 1st ARRAY---
+Enter the element at arr[0] :55
+Enter the element at arr[1] :44
+Enter the element at arr[2] :3
+Enter the element at arr[3] :3
+Enter the element at arr[4] :2
+
+----ELEMENT OF 2nd ARRAY---
+Enter the element at arr[0] :55
+Enter the element at arr[1] :44
+Enter the element at arr[2] :3
+Enter the element at arr[3] :3
+Enter the element at arr[4] :1
+---NO,BOTH ARRAY ARE NOT SAME.----  
+
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ17">17. Merge the two sorted arrays into one array but in sorted order?</b>
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void mergeSortedArrays(int arr1[], int size1, int arr2[], int size2, int merged[]) {
+    int i = 0, j = 0, k = 0;
+
+    while (i &lt; size1 && j &lt; size2) {
+        if (arr1[i] &lt;= arr2[j]) {
+            merged[k++] = arr1[i++];
+        } else {
+            merged[k++] = arr2[j++];
+        }
+    }
+
+    while (i &lt; size1) {
+        merged[k++] = arr1[i++];
+    }
+
+    while (j &lt; size2) {
+        merged[k++] = arr2[j++];
+    }
+}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i &lt; size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr1[] = {1, 3, 5, 7};
+    int arr2[] = {2, 4, 6, 8};
+    int size1 = sizeof(arr1) / sizeof(arr1[0]);
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
+    int *merged = (int *)malloc((size1 + size2) * sizeof(int));
+
+    mergeSortedArrays(arr1, size1, arr2, size2, merged);
+
+    printf("Merged sorted array: ");
+    printArray(merged, size1 + size2);
+
+    free(merged);
+    return 0;
+}
+
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3> 
+
+arr1 = {1, 3, 5, 7}
+arr2 = {2, 4, 6, 8}
+
+Merged sorted array: 1 2 3 4 5 6 7 8 
+
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ18"> 18. Find the local minima in the array? (An element in an array is a local minima if it less than the 
+       element after it, and the element before it).</b>
+
+#include &lt;stdio.h&gt;
+
+void insert(int arr[], int size)
+{
+        int i;
+        for (i = 1; i &lt; size - 1; i++)
+        {
+        if (arr[i] &lt; arr[i - 1] && arr[i] &lt; arr[i + 1])
+        {
+                printf("The local minima at arr[%d] is %d", i, arr[i]);
+                return;    
+        }    
+        }
+        printf("The local minima is not present");
+}
+
+int main()
+{
+        int i;
+        int arr[5];
+        for (i = 0; i &lt; 5; i++)
+        {
+        printf("Enter the arr[%d]: ", i);
+        scanf("%d", &arr[i]);    
+        }
+        insert(arr, 5);
+}
+                               
+        </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter the arr[0] 1
+Enter the arr[1] 2
+Enter the arr[2] 1
+Enter the arr[3] 4
+Enter the arr[4] 5
+The local minima at arr[2] is 1  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ19">19. Find the local maxima in the array? (An element in an array is a local maxima if it greater than the
+      element after it,and the element before it)</b>
+
+#include &lt;stdio.h&gt;
+
+void insert(int arr[], int size)
+{
+        int i;
+        for (i = 1; i &lt; size - 1; i++)
+        {
+        if (arr[i] &gt; arr[i - 1] && arr[i] &gt; arr[i + 1])
+        {
+                printf("The local minima at arr[%d] is %d", i, arr[i]);
+                return;    
+        }    
+        }
+        printf("The local minima is not present");
+}
+
+int main()
+{
+        int i;
+        int arr[5];
+        for (i = 0; i &lt; 5; i++)
+        {
+        printf("Enter the arr[%d]: ", i);
+        scanf("%d", &arr[i]);    
+        }
+        insert(arr, 5);
+}
+      
+    </pre>
+        <pre class="out">
+        <h3 style="text-align: center;">OUTPUT</h3>
+Enter the arr[0] 2
+Enter the arr[1] 1
+Enter the arr[2] 4
+Enter the arr[3] 3
+Enter the arr[4] 6
+The local minima at arr[2] is 4  
+</pre>
+
+        <pre>
+<br>
+<b id="ArrQ20">20. Trapping Rain Water Problem: Given n non-negative integers representing an elevation map where the width 
+      of each bar is 1, compute how much water it can trap after raining.
+      Explanation -
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1] Output: 6 Explanation: The above elevation map (black section)
+is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.</b>
+
+#include &lt;stdio.h&gt;
+int trapWater(int height[], int heightSize)
+{
+int a, b;
+int result = 0;
+int layerNum = 1;
+int layerWater;
+do
+{
+layerWater = 0;
+a = 0;
+b = 0;
+for (int i = 0; i &lt; heightSize; i++)
+{
+printf("(%d &lt; %d) && (%d &gt;= %d) && (%d == 0) && (%d &lt; %d)\n", i, heightSize - 1, height[i],
+layerNum, a, height[i + 1], height[i]);
+if ((i &lt; (heightSize - 1)) && (height[i] &gt;= layerNum) && (a == 0) && (height[i + 1] &lt; height[i]))
+{
+    a = i;
+    printf("1 a = %d b = %d\n", a, b);
+    continue;
+}
+printf("(%d &gt;= %d) && (%d != 0) && ((%d - %d) &gt; 0)\n", height[i], layerNum, a, b, a);
+if ((height[i] &gt;= layerNum) && (a != 0) && ((i - a) &gt; 0))
+{
+    b = i;
+    layerWater += b - a - 1;
+    printf("2 a = %d b = %d lw=%d \n", a, b, layerWater);
+    a = 0;
+    b = 0;
+}
+    }
+    printf("%d\n", layerWater);
+    result += layerWater;
+    layerNum++;
+} while (layerWater != 0);
+return result;
+}
+int main()
+{
+    // int arr[] = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+    int arr[] = {4, 2, 0, 3, 2, 5};
+    // printf("%d\n", trapWater(arr, 12));
+    printf("%d\n", trapWater(arr, 6));
+    return 0;
+}
+
+</pre>
+        <pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3> 
+
+(0 &lt; 5) && (4 &gt;= 1) && (0 == 0) && (2 &lt; 4)
+1 a = 0 b = 0
+(1 &lt; 5) && (2 &gt;= 1) && (0 == 0) && (0 &lt; 2)
+1 a = 1 b = 0
+(2 &lt; 5) && (0 &gt;= 1) && (0 == 0) && (3 &lt; 0)
+(3 &lt; 5) && (3 &gt;= 1) && (0 == 0) && (2 &lt; 3)
+(4 &lt; 5) && (2 &gt;= 1) && (0 == 0) && (5 &lt; 2)
+(5 &lt; 5) && (5 &gt;= 1) && (0 == 0) && (0 &lt; 5)
+0
+2
+
+</pre>
+    </div>
+    <button class="back-to-top" id="backToTopBtn">Back to Top</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+
+        // Get the button
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        // Show or hide the button based on scroll position
+        window.onscroll = function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        // Scroll to the top when the button is clicked
+        backToTopBtn.onclick = function () {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        };
+    </script>
+</body>
+
+</html>

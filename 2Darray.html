@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2DARRAY</title>
+    <style>
+            /* General reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Same background color */
+        color: #33334d; /* Dark text color */
+    }
+
+    .container {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    /* Navigation Bar (on the left side) */
+    .navbar {
+        width: 250px;
+        background-color: #33334d; /* Preferred dark color */
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-y: auto;
+        position: fixed; /* Keep navbar fixed to the left */
+        height: 100vh; /* Full height to fill the left side */
+    }
+
+    .navlist {
+        list-style: none;
+        padding: 0;
+    }
+
+    .navlist li {
+        margin: 10px 0;
+    }
+
+    .navlist a {
+        text-decoration: none;
+        color: #ceb040; /* Gold text */
+        font-weight: bold;
+        font-size: 18px;
+        padding: 10px;
+        display: block;
+        transition: background-color 0.3s ease;
+    }
+
+    .navlist a:hover {
+        background-color: #6d5c6a; /* Soft purple hover effect */
+        color: #f4f4f4;
+    }
+
+    /* Main content */
+    .main-content {
+        flex-grow: 1;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .box-main {
+        max-width: 800px;
+        margin-left: 170px;
+        width: 100%;
+        background-color: #fff; /* White background for the box */
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 2px solid #ceb040; /* Gold border */
+    }
+
+    .firsthalf2 ul {
+        list-style: none;
+    }
+
+    .firsthalf2 li {
+        margin: 10px 0;
+    }
+
+    .firsthalf2 a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #6d5c6a;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        /* Soft purple color */
+    }
+
+    .firsthalf2 a:hover {
+        color: #ceb040; /* Gold on hover */
+    }
+    .vasu {
+            color: rgb(14, 13, 13);
+            margin-left: 300px;
+            max-width: 1000px;
+            font-size: large;
+            width: auto;
+            background-color: #fff;
+            /* White background for the box */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 4px solid #ceb040;
+            word-wrap: break-word;
+        }
+
+        .vasu b {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ceb040;
+        }
+
+        .out {
+            color: #fff;
+            background-color: #111111;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+            background-color: #ceb040;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+            z-index: 1000; /* On top of other elements */
+        }
+
+        .back-to-top:hover {
+            background-color: #6d5c6a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Navigation Bar -->
+        <nav class="navbar">
+            <ul class="navlist">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="2Darray.html">2D Array</a></li>
+                <li><a href="graph.html">Graph</a></li>
+                <li><a href="linkedlist.html">Linked List</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="rec.html">Recursion</a></li>
+                <li><a href="searching.html">Searching Algorithm</a></li>
+                <li><a href="array.html">Single Dimension Array</a></li>
+                <li><a href="sorting.html">Sorting Algorithm</a></li>
+                <li><a href="stack.html">Stack</a></li>
+                <li><a href="String.html">Strings</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+
+        <!-- Right Main Content -->
+        <section class="main-content">
+            <div class="box-main">
+                <h1>2D-ARRAY Questions:</h1> <!-- Added a heading for context -->
+                <div class="firsthalf2">
+                    <ul>
+                        <li><a href="#2dQ1">1. Enter a matrix of 4 rows and 2 columns from the user display it in matrix format?</a></li>
+                        <li><a href="#2dQ2">2. Enter two Matrices from user, add the matrices and display the answer?</a></li>
+                        <li><a href="#2dQ3">3. Enter two Matrices from user, subtract the matrices and display the answer?</a></li>
+                        <li><a href="#2dQ4">4. Enter two Matrices from user, multiply the matrices and display the answer?</a></li>
+                        <li><a href="#2dQ5">5. Enter a Matrix from user, copy it in another matrix of same size?</a></li>
+                        <li><a href="#2dQ6">6. Enter the Matrix from user, multiply it with a scalar value and display the answer?</a></li>
+                        <li><a href="#2dQ7">7. Create a tic tac toe game using 2D Arrays.</a></li>            
+                </div>
+            </div>
+        </section>
+    </div>
+<div class="vasu">
+<pre>
+<br>
+<b id="2dQ1">1. Enter a matrix of 4 rows and 2 columns from the user display it in matrix format?</b>
+
+#include&lt;stdio.h&gt;
+int main()
+{
+int arr[4][2],i,j;
+printf("--------MATRIX------\n");
+for(i=0;i&lt;4;i++)
+{
+    for(j=0;j&lt;2;j++)
+    {
+        printf("Enter the element arr[%d][%d]: ",i,j);
+        scanf("%d",&arr[i][j]);
+    }
+}
+printf("The obtained matrix is \n");
+for(i=0;i&lt;4;i++)
+{
+    for(j=0;j&lt;2;j++)
+    {
+        printf("%d\t",arr[i][j]);
+    }
+    printf("\n");
+}
+return 0;
+}
+                
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3> 
+-----------MATRIX-----------
+Enter the element arr[0][0]: 1
+Enter the element arr[0][1]: 2
+Enter the element arr[1][0]: 3
+Enter the element arr[1][1]: 4
+Enter the element arr[2][0]: 5
+Enter the element arr[2][1]: 1
+Enter the element arr[3][0]: 2
+Enter the element arr[3][1]: 3
+The obtained matrix is
+1       2
+3       4
+5       1
+2       3 
+</pre>
+
+<pre>
+<br>
+<b id="2dQ2">2. Enter two Matrices from user, add the matrices and display the answer?</b>
+
+#include&lt;stdio.h&gt;
+int main()
+{
+int arr1[3][3],i,j,arr2[3][3],result[3][3];
+printf("--------MATRIX------\n");
+for(i=0;i&lt;3;i++)
+{
+    for(j=0;j&lt;3;j++)
+    {
+        printf("Enter the element arr[%d][%d]: ",i,j);
+        scanf("%d",&arr1[i][j]);
+    }
+}
+printf("\nThe obtained matrix is \n");
+for(i=0;i&lt;3;i++)
+{
+    for(j=0;j&lt;3;j++)
+    {
+        printf("%d\t",arr1[i][j]);
+    }
+    printf("\n");
+}
+for(i=0;i&lt;3;i++)
+{
+    for(j=0;j&lt;3;j++)
+    {
+        printf("Enter the element arr[%d][%d]: ",i,j);
+        scanf("%d",&arr2[i][j]);
+    }
+}
+printf("\nThe obtained matrix is \n");
+for(i=0;i&lt;3;i++)
+{
+    for(j=0;j&lt;3;j++)
+    {
+        printf("%d\t",arr2[i][j]);
+    }
+    printf("\n");
+}
+printf("\n\nThe obtained matrix after addition is \n");
+for(i=0;i&lt;3;i++)
+{
+    for(j=0;j&lt;3;j++)
+    {
+        result[i][j]=arr1[i][j]+arr2[i][j];
+        printf("%d\t",result[i][j]);
+    }
+    printf("\n");
+}
+return 0;
+}
+                     
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+--------MATRIX------
+Enter the element arr[0][0]: 1
+Enter the element arr[0][1]: 2
+Enter the element arr[0][2]: 3
+Enter the element arr[1][0]: 4
+Enter the element arr[1][1]: 3
+Enter the element arr[1][2]: 2
+Enter the element arr[2][0]: 1
+Enter the element arr[2][1]: 4
+Enter the element arr[2][2]: 3
+
+The obtained matrix is
+1       2       3
+4       3       2
+1       4       3
+Enter the element arr[0][0]: 5
+Enter the element arr[0][1]: 5
+Enter the element arr[0][2]: 4
+Enter the element arr[1][0]: 8
+Enter the element arr[1][1]: 9
+Enter the element arr[1][2]: 5
+Enter the element arr[2][0]: 2
+Enter the element arr[2][1]: 5
+Enter the element arr[2][2]: 7
+
+The obtained matrix is
+5       5       4
+8       9       5
+2       5       7
+
+
+The obtained matrix after addition is
+6       7       7
+12      12      7
+3       9       10
+
+</pre>
+
+<pre>
+<br>
+<b id="2dQ3">3. Enter two Matrices from user, subtract the matrices and display the answer?</b>
+
+#include&lt;stdio.h&gt;
+int main()
+{
+int arr1[3][3],i,j,arr2[3][3],result[3][3];
+printf("----MATRIX----\n");
+for(i=0;i&lt;3;i++)
+{
+    for(j=0;j&lt;3;j++)
+    {
+        printf("Enter the element arr[%d][%d]: ",i,j);
+        scanf("%d",&arr1[i][j]);
+    }
+}
+printf("\nThe obtained matrix is \n");
+for(i=0;i&lt;3;i++)
+{
+    for(j=0;j&lt;3;j++)
+    {
+        printf("%d\t",arr1[i][j]);
+    }
+    printf("\n");
+}
+for(i=0;i&lt;3;i++)
+{
+    for(j=0;j&lt;3;j++)
+    {
+        printf("Enter the element arr[%d][%d]: ",i,j);
+        scanf("%d",&arr2[i][j]);
+    }
+}
+printf("\nThe obtained matrix is \n");
+for(i=0;i&lt;3;i++)
+{
+    for(j=0;j&lt;3;j++)
+    {
+        printf("%d\t",arr2[i][j]);
+    }
+    printf("\n");
+}
+printf("\n\nThe obtained matrix after subtraction 2nd from 1st matrix is \n");
+for(i=0;i&lt;3;i++)
+{
+    for(j=0;j&lt;3;j++)
+    {
+        result[i][j]=arr1[i][j]-arr2[i][j];
+        printf("%d\t",result[i][j]);
+    }
+    printf("\n");
+}
+return 0;
+}
+    
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+----MATRIX----
+Enter the element arr[0][0]: 4
+Enter the element arr[0][1]: 2
+Enter the element arr[0][2]: 2
+Enter the element arr[1][0]: 5
+Enter the element arr[1][1]: 5
+Enter the element arr[1][2]: 61
+Enter the element arr[2][0]: 4
+Enter the element arr[2][1]: 54
+Enter the element arr[2][2]: 22
+
+The obtained matrix is
+4       2       2
+5       5       61
+4       54      22
+Enter the element arr[0][0]: 1
+Enter the element arr[0][1]: 4
+Enter the element arr[0][2]: 5
+Enter the element arr[1][0]: 8
+Enter the element arr[1][1]: 6
+Enter the element arr[1][2]: 9
+Enter the element arr[2][0]: 8
+Enter the element arr[2][1]: 52
+Enter the element arr[2][2]: 12
+
+The obtained matrix is
+1       4       5
+8       6       9
+8       52      12
+
+The obtained matrix after subtraction 2nd from 1st matrix is
+-3      2       3
+3       1       -52
+4       -2      -10
+
+</pre>
+
+<pre>
+<br>
+<b id="2dQ4">4. Enter two Matrices from user, multiply the matrices and display the answer?</b>
+
+#include &lt;stdio.h&gt;
+
+void main() 
+{
+int arr1[3][3], arr2[3][3], result[3][3] = {0};
+int i, j, k;
+
+printf("----MATRIX 1----\n");
+for (i = 0; i &lt; 3; i++) 
+{
+    for (j = 0; j &lt; 3; j++)
+    {
+        printf("Enter the element arr1[%d][%d]: ", i, j);
+        scanf("%d", &arr1[i][j]);
+    }
+}
+
+printf("\nThe obtained matrix 1 is \n");
+for (i = 0; i &lt; 3; i++)
+{
+    for (j = 0; j &lt; 3; j++)
+    {
+        printf("%d\t", arr1[i][j]);
+    }
+    printf("\n");
+}
+
+printf("\n----MATRIX 2----\n");
+for (i = 0; i &lt; 3; i++)
+{
+    for (j = 0; j &lt; 3; j++)
+    {
+        printf("Enter the element arr2[%d][%d]: ", i, j);
+        scanf("%d", &arr2[i][j]);
+    }
+}
+
+printf("\nThe obtained matrix 2 is \n");
+for (i = 0; i &lt; 3; i++)
+{
+    for (j = 0; j &lt; 3; j++)
+    {
+        printf("%d\t", arr2[i][j]);
+    }
+    printf("\n");
+}
+
+printf("\n\nThe result of multiplication of the two matrices is \n");
+for (i = 0; i &lt; 3; i++) 
+{
+    for (j = 0; j &lt; 3; j++) 
+    {
+        result[i][j] = 0;
+        for (k = 0; k &lt; 3; k++) 
+        {
+            result[i][j] += arr1[i][k] * arr2[k][j];
+        }
+        printf("%d\t", result[i][j]);
+    }
+    printf("\n");
+}
+
+}
+
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+----MATRIX 1----
+Enter the element arr1[0][0]: 1
+Enter the element arr1[0][1]: 2
+Enter the element arr1[0][2]: 3
+Enter the element arr1[1][0]: 4
+Enter the element arr1[1][1]: 5
+Enter the element arr1[1][2]: 6
+Enter the element arr1[2][0]: 7
+Enter the element arr1[2][1]: 8
+Enter the element arr1[2][2]: 9
+
+The obtained matrix 1 is
+1       2       3
+4       5       6
+7       8       9
+
+----MATRIX 2----
+Enter the element arr2[0][0]: 10
+Enter the element arr2[0][1]: 11
+Enter the element arr2[0][2]: 12
+Enter the element arr2[1][0]: 13
+Enter the element arr2[1][1]: 14
+Enter the element arr2[1][2]: 15
+Enter the element arr2[2][0]: 16
+Enter the element arr2[2][1]: 17
+Enter the element arr2[2][2]: 18
+
+The obtained matrix 2 is
+10      11      12
+13      14      15
+16      17      18
+
+
+The result of multiplication of the two matrices is
+84      90      96
+201     216     231
+318     342     366  
+</pre>
+<pre>
+<br>
+<b id="2dQ5">5. Enter a Matrix from user, copy it in another matrix of same size?</b>
+
+#include &lt;stdio.h&gt;
+
+void main()
+{ 
+int matrix[100][100], matrix2[100][100];
+
+for (int i = 0; i &lt; 3; i++) 
+{ 
+    for (int j = 0; j &lt; 3; j++) 
+    { 
+        printf("Enter the matrix 1 at matrix[%d][%d]: ", i, j); 
+        scanf("%d", &matrix[i][j]); 
+    } 
+} 
+
+for (int i = 0; i &lt; 3; i++) 
+{ 
+    for (int j = 0; j &lt; 3; j++) 
+    { 
+        matrix2[i][j] = matrix[i][j]; 
+    } 
+} 
+
+printf("\nMATRIX TWO ELEMENTS AFTER COPY :\n"); 
+for (int i = 0; i &lt; 3; i++) 
+{ 
+    for (int j = 0; j &lt; 3; j++) 
+    { 
+        printf("%d ", matrix2[i][j]); 
+    } 
+    printf("\n"); 
+} 
+
+}
+                 
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+Enter the matrix 1 at matrix[0][0]: 1
+Enter the matrix 1 at matrix[0][1]: 2
+Enter the matrix 1 at matrix[0][2]: 3
+Enter the matrix 1 at matrix[1][0]: 4
+Enter the matrix 1 at matrix[1][1]: 5
+Enter the matrix 1 at matrix[1][2]: 6
+Enter the matrix 1 at matrix[2][0]: 7
+Enter the matrix 1 at matrix[2][1]: 8
+Enter the matrix 1 at matrix[2][2]: 9
+MATRIX TWO ELEMENTS AFTER COPY :
+1 2 3
+4 5 6
+7 8 9
+
+</pre>
+
+<pre>
+<br>
+<b id="2dQ6">6. Enter the Matrix from user, multiply it with a scalar value and display the answer?</b>
+
+#include &lt;stdio.h&gt;
+
+void main() 
+{ 
+int matrix[100][100], matrix2[100][100];
+int i, j;
+
+for (int i = 0; i &lt; 3; i++) 
+{ 
+    for (int j = 0; j &lt; 3; j++) 
+    { 
+        printf("Enter data for matrix at matrix[%d][%d]: ", i, j); 
+        scanf("%d", &matrix[i][j]); 
+    } 
+} 
+
+for (int i = 0; i &lt; 3; i++) 
+{ 
+    for (int j = 0; j &lt; 3; j++) 
+    { 
+        matrix2[i][j] = matrix[i][j] * 2; 
+    } 
+} 
+
+printf("\nMATRIX ELEMENTS AFTER MULTIPLICATION OF SCALER:\n"); 
+for (int i = 0; i &lt; 3; i++) 
+{ 
+    for (int j = 0; j &lt; 3; j++) 
+    { 
+        printf("%d ", matrix2[i][j]); 
+    } 
+    printf("\n"); 
+}
+
+}
+
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>
+Enter data for matrix at matrix[0][0]: 1
+Enter data for matrix at matrix[0][1]: 2
+Enter data for matrix at matrix[0][2]: 3
+Enter data for matrix at matrix[1][0]: 4
+Enter data for matrix at matrix[1][1]: 5
+Enter data for matrix at matrix[1][2]: 6
+Enter data for matrix at matrix[2][0]: 7
+Enter data for matrix at matrix[2][1]: 9
+Enter data for matrix at matrix[2][2]: 9
+
+MATRIX  ELEMENTS AFTER MULTIPICATION OF SCALER:
+2 4 6
+8 10 12
+14 18 18  
+</pre>
+
+<pre>
+<br>
+<b id="2dQ7">7. Create a tic tac toe game using 2D Arrays.</b>
+
+#include &lt;stdio.h&gt;
+#define rows 3
+#define cols 3
+void printMat(char mat[rows][cols]) {
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            printf("%c ", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+void setMat(char mat[rows][cols], char val) {
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            mat[i][j] = val;
+        }
+    }
+}
+int checkMat(char mat[rows][cols]) {
+    if (mat[0][0] != ' ') {
+        if (mat[0][1] == mat[0][0]) {
+            if (mat[0][2] == mat[0][0]) // r1
+            {
+                printf("%c wins !!!", mat[0][0]);
+                return 1;
+            }
+        } else if (mat[1][0] == mat[0][0]) {
+            if (mat[2][0] == mat[0][0]) // c1
+            {
+                printf("%c wins !!!", mat[0][0]);
+                return 1;
+            }
+        } else if (mat[1][1] == mat[0][0]) {
+            if (mat[2][2] == mat[0][0]) // d1
+            {
+                printf("%c wins !!!", mat[0][0]);
+                return 1;
+            }
+        }
+    }
+    if (mat[0][1] != ' ') {
+        if (mat[1][1] == mat[0][1]) {
+            if (mat[2][1] == mat[0][1]) // c2
+            {
+                printf("%c wins !!!", mat[0][1]);
+                return 1;
+            }
+        }
+    }
+    if (mat[0][2] != ' ') {
+        if (mat[1][2] == mat[0][2]) {
+            if (mat[2][2] == mat[0][2]) // c3
+            {
+                printf("%c wins !!!", mat[0][2]);
+                return 1;
+            }
+        } else if (mat[1][1] == mat[0][2]) {
+            if (mat[0][2] == mat[2][0]) // d2
+            {
+                printf("%c wins !!!", mat[0][2]);
+                return 1;
+            }
+        }
+    }
+    if (mat[1][0] != ' ') {
+        if (mat[1][1] == mat[1][0]) {
+            if (mat[1][2] == mat[1][0]) // r2
+            {
+                printf("%c wins !!!", mat[1][0]);
+                return 1;
+            }
+        }
+    }
+    if (mat[2][0] != ' ') {
+        if (mat[2][1] == mat[2][0]) {
+            if (mat[2][2] == mat[2][0]) // r3
+            {
+                printf("%c wins !!!", mat[2][0]);
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+int insertVal(char mat[rows][cols], int pos, char val) {
+    int r = pos / 3;
+    int c = pos % 3;
+    if (mat[r][c] == ' ') {
+        mat[r][c] = val;
+        return 1;
+    } else {
+        printf("Value already exists. Try other location \n");
+        return 0;
+    }
+}
+int main() {
+    char mat[rows][cols];
+    int turn = 0, pos;
+    setMat(mat, ' ');
+    while (turn &lt; 9) {
+        printf("Enter position (0-8) : ");
+        scanf("%d", &pos);
+        if ((pos &gt;= 0) &amp;&amp; (pos &lt;= 8)) {
+            if ((turn % 2) == 0) {
+                if (insertVal(mat, pos, 'X'))
+                    turn++;
+            } else {
+                if (insertVal(mat, pos, 'O'))
+                    turn++;
+            }
+            printMat(mat);
+            if (checkMat(mat))
+                return 0;
+        } else {
+            printf("Invalid Move\n");
+        }
+    }
+    printf("DRAW!!!");
+}
+</pre>
+<pre class="out">
+<h3 style="text-align: center;">OUTPUT</h3>  
+
+ENTER POSITION (0-8) : 0
+X X X 
+  O   
+     
+Enter position (0-8) : 1
+Value already exists. Try other location 
+Enter position (0-8) : 3
+O X X 
+  O   
+     
+Enter position (0-8) : 4
+X X X 
+  O   
+     
+Enter position (0-8) : 5
+Value already exists. Try other location 
+Enter position (0-8) : 2
+X X X 
+  O   
+     
+X wins !!!
+
+
+</pre>
+</div>
+    <button class="back-to-top" id="backToTopBtn">Back to Top</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+
+        // Get the button
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        // Show or hide the button based on scroll position
+        window.onscroll = function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        // Scroll to the top when the button is clicked
+        backToTopBtn.onclick = function () {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        };
+    </script>
+</body>
+</html>
